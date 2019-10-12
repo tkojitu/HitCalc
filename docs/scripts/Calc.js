@@ -11,8 +11,8 @@ export default class {
 	}
 	
 	setupButtonCalc() {
-		var self = this;
-		var b = document.getElementById("buttonCalc");
+		let self = this;
+		let b = document.getElementById("buttonCalc");
 		b.addEventListener(
 			"click",
 			function() {
@@ -21,8 +21,8 @@ export default class {
 	}
 
 	setupButtonClear() {
-		var self = this;
-		var b = document.getElementById("buttonClear");
+		let self = this;
+		let b = document.getElementById("buttonClear");
 		b.addEventListener(
 			"click",
 			function() {
@@ -31,13 +31,13 @@ export default class {
 	}
 
 	calc() {
-		var t = document.getElementById("book");
-		var res = this.p.parse(t.value);
+		let t = document.getElementById("book");
+		let res = this.p.parse(t.value);
 		t.value = res;
 	}
 
 	clear() {
-		var t = document.getElementById("book");
+		let t = document.getElementById("book");
 		t.value = "";
 	}
 }
