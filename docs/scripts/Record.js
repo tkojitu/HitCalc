@@ -5,6 +5,14 @@ export default class {
 		this.c = comment;
 	}
 
+	getShot() {
+		return this.s;
+	}
+
+	getHit() {
+		return this.h;
+	}
+
 	calcRate() {
 		if (this.t == 0) {
 			return 0;
