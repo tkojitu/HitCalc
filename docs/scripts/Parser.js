@@ -2,9 +2,9 @@ import Record from "./Record.js";
 
 export default class {
 	parse(text) {
-		var res = "";
-		var lines = this.breakLines(text);
-		var recs = this.parseLines(lines);
+		let res = "";
+		let lines = this.breakLines(text);
+		let recs = this.parseLines(lines);
 		return this.writeResult(recs);
 	}
 
@@ -13,9 +13,9 @@ export default class {
 	}
 
 	parseLines(lines) {
-		var recs = [];
-		for (var i = 0; i < lines.length; ++i) {
-			var r = this.parseRecord(lines[i]);
+		let recs = [];
+		for (let ln of lines) {
+			var r = this.parseRecord(ln);
 			if (!r) {
 				continue;
 			}
@@ -25,30 +25,30 @@ export default class {
 	}
 
 	parseRecord(line) {
-		var ln = line.trim();
-		var ary = ln.split(/\s+/, 3);
+		let ln = line.trim();
+		let ary = ln.split(/\s+/, 3);
 		if (ary.length < 2) {
 			return null;
 		}
-		var total = parseInt(ary[0], 10);
+		let total = parseInt(ary[0], 10);
 		if (total == 0) {
 			return null;
 		}
-		var hit = parseInt(ary[1]);
-		var comment = (ary.length == 3) ? ary[2] : "";
+		let hit = parseInt(ary[1]);
+		let comment = (ary.length == 3) ? ary[2] : "";
 		return new Record(total, hit, comment);
 	}
 
 	writeResult(recs) {
-		var txt = this.writeRecords(recs);
+		let txt = this.writeRecords(recs);
 		txt += this.writeTotal(recs);
 		return txt;
 	}
 
 	writeRecords(recs) {
-		var txt = "";
-		for (var i = 0; i < recs.length; ++i) {
-			txt += recs[i].toString() + "\n";
+		let txt = "";
+		for (let r of recs) {
+			txt += r.toString() + "\n";
 		}
 		return txt;
 	}
@@ -58,17 +58,17 @@ export default class {
 	}
 	
 	sumShots(recs) {
-		var n = 0;
-		for (var i = 0; i < recs.length; ++i) {
-			n += recs[i].getShot();
+		let n = 0;
+		for (let r of recs) {
+			n += r.getShot();
 		}
 		return n;
 	};
 
 	sumHits(recs) {
-		var n = 0;
-		for (var i = 0; i < recs.length; ++i) {
-			n += recs[i].getHit();
+		let n = 0;
+		for (let r of recs) {
+			n += r.getHit();
 		}
 		return n;
 	}
