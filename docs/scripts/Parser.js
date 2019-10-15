@@ -55,7 +55,11 @@ export default class {
 	}
 
 	writeTotal(recs) {
-		return "---------\n" + this.sumShots(recs) + " " + this.sumHits(recs) + " " + this.totalRate(recs).toFixed(2) + "\n";
+		return "---------\n" + this.writeStats(recs, "TOTAL");
+	}
+
+	writeStats(recs, comment) {
+		return "" + this.sumShots(recs) + " " + this.sumHits(recs) + " " + this.totalRate(recs).toFixed(2) + " " + comment + "\n";
 	}
 	
 	sumShots(recs) {
@@ -82,7 +86,7 @@ export default class {
 		let txt = "";
 		var gs = this.groupRecords(recs);
 		for (let [c, rs] of gs) {
-			txt += this.sumShots(rs) + " " + this.sumHits(rs) + " " + this.totalRate(rs).toFixed(2) + " " + c + "\n";
+			txt += this.writeStats(rs, c);
 		}
 		return txt;
 	}
