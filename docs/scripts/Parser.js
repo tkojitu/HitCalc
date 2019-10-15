@@ -42,6 +42,7 @@ export default class {
 	writeResult(recs) {
 		let txt = this.writeRecords(recs);
 		txt += this.writeTotal(recs);
+		txt += this.writeGroups(recs);
 		return txt;
 	}
 
@@ -75,5 +76,28 @@ export default class {
 
 	totalRate(recs) {
 		return this.sumHits(recs) / this.sumShots(recs) * 100;
+	}
+
+	writeGroups(recs) {
+		let txt = "";
+		var gs = this.groupRecords(recs);
+		for (let [c, rs] of gs) {
+			txt += this.sumShots(rs) + " " + this.sumHits(rs) + " " + this.totalRate(rs).toFixed(2) + " " + c + "\n";
+		}
+		return txt;
+	}
+
+	groupRecords(recs) {
+		let m = new Map();
+		for (let r of recs) {
+			if (m.has(r.getComment())) {
+				let a = m.get(r.getComment());
+				a.push(r);
+			} else {
+				let a = [r];
+				m.set(r.getComment(), a);
+			}
+		}
+		return m;
 	}
 }

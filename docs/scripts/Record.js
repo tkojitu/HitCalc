@@ -13,6 +13,10 @@ export default class {
 		return this.h;
 	}
 
+	getComment() {
+		return this.c;
+	}
+
 	calcRate() {
 		if (this.t == 0) {
 			return 0;
