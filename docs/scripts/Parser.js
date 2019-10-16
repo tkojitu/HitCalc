@@ -107,7 +107,7 @@ export default class {
 	}
 
 	writeFooter() {
-		let txt = new Date().toISOString();
-		return txt + "\n========================\n";
+		let txt = new Date().toLocaleString();
+		return txt + "\n===================\n";
 	}
 }
