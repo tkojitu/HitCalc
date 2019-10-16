@@ -7,6 +7,7 @@ export default class {
 
 	setup() {
 		this.setupButtonCalc();
+		this.setupButtonCopy();
 		this.setupButtonClear();
 	}
 	
@@ -17,6 +18,16 @@ export default class {
 			"click",
 			function() {
 				self.calc();
+			});
+	}
+
+	setupButtonCopy() {
+		let self = this;
+		let b = document.getElementById("buttonCopy");
+		b.addEventListener(
+			"click",
+			function() {
+				self.copyToClipboard();
 			});
 	}
 
@@ -40,5 +51,10 @@ export default class {
 		let t = document.getElementById("book");
 		t.value = "";
 	}
-}
 
+	copyToClipboard() {
+		let e = document.getElementById("book");
+		e.select();
+		document.execCommand("copy");
+	}
+}
