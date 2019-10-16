@@ -43,6 +43,7 @@ export default class {
 		let txt = this.writeRecords(recs);
 		txt += this.writeTotal(recs);
 		txt += this.writeGroups(recs);
+		txt += this.writeFooter();
 		return txt;
 	}
 
@@ -103,5 +104,10 @@ export default class {
 			}
 		}
 		return m;
+	}
+
+	writeFooter() {
+		let txt = new Date().toISOString();
+		return txt + "\n========================\n";
 	}
 }
