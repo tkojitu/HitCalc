@@ -9,6 +9,7 @@ export default class {
 		this.setupButtonCalc();
 		this.setupButtonCopy();
 		this.setupButtonClear();
+		this.setupButtonCount();
 	}
 	
 	setupButtonCalc() {
@@ -27,7 +28,7 @@ export default class {
 		b.addEventListener(
 			"click",
 			function() {
-				self.copyToClipboard();
+				self.copy();
 			});
 	}
 
@@ -41,10 +42,20 @@ export default class {
 			});
 	}
 
+	setupButtonCount() {
+		let self = this;
+		let b = document.getElementById("buttonCount");
+		b.addEventListener(
+			"click",
+			function() {
+				self.count();
+			});
+	}
+
 	calc() {
-		let t = document.getElementById("book");
-		let res = this.p.parse(t.value);
-		t.value = res;
+		let b = document.getElementById("book");
+		let res = this.p.parse(b.value);
+		b.value = res;
 	}
 
 	clear() {
@@ -52,9 +63,15 @@ export default class {
 		t.value = "";
 	}
 
-	copyToClipboard() {
+	copy() {
 		let e = document.getElementById("book");
 		e.select();
 		document.execCommand("copy");
+	}
+
+	count() {
+		let p = document.getElementById("panelCount");
+		let b = document.getElementById("book");
+		p.innerHTML = this.p.count(b.value);
 	}
 }

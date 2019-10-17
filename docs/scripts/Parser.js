@@ -1,15 +1,14 @@
 import Record from "./Record.js";
 
 export default class {
-	parse(text) {
-		let res = "";
-		let lines = this.breakLines(text);
+	parse(txt) {
+		let lines = this.breakLines(txt);
 		let recs = this.parseLines(lines);
 		return this.writeResult(recs);
 	}
 
-	breakLines(text) {
-		return text.split(/\r\n|\r|\n/);
+	breakLines(txt) {
+		return txt.split(/\r\n|\r|\n/);
 	}
 
 	parseLines(lines) {
@@ -109,5 +108,11 @@ export default class {
 	writeFooter() {
 		let txt = new Date().toLocaleString();
 		return txt + "\n===================\n";
+	}
+
+	count(txt) {
+		let lines = this.breakLines(txt);
+		let recs = this.parseLines(lines);
+		return this.sumShots(recs).toString();
 	}
 }
