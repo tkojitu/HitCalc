@@ -65,8 +65,12 @@ export default class {
 	clear() {
 		let b = this.getBook();
 		b.value = "";
-		let p = document.getElementById("panelCount");
-		p.innerHTML = "0";
+		let t = this.getTag();
+		t.innerHTML = "0";
+	}
+
+	getTag() {
+		return document.getElementById("tag");
 	}
 
 	copy() {
@@ -76,8 +80,8 @@ export default class {
 	}
 
 	count() {
-		let p = document.getElementById("panelCount");
+		let t = this.getTag();
 		let b = this.getBook();
-		p.innerHTML = this.p.count(b.value);
+		t.innerHTML = this.p.count(b.value);
 	}
 }
