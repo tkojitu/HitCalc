@@ -53,27 +53,31 @@ export default class {
 	}
 
 	calc() {
-		let b = document.getElementById("book");
+		let b = this.getBook();
 		let res = this.p.parse(b.value);
 		b.value = res;
 	}
 
+	getBook() {
+		return document.getElementById("book");
+	}
+
 	clear() {
-		let b = document.getElementById("book");
+		let b = this.getBook();
 		b.value = "";
 		let p = document.getElementById("panelCount");
 		p.innerHTML = "0";
 	}
 
 	copy() {
-		let e = document.getElementById("book");
+		let b = this.getBook();
 		e.select();
 		document.execCommand("copy");
 	}
 
 	count() {
 		let p = document.getElementById("panelCount");
-		let b = document.getElementById("book");
+		let b = this.getBook();
 		p.innerHTML = this.p.count(b.value);
 	}
 }
