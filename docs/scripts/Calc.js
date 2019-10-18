@@ -59,8 +59,10 @@ export default class {
 	}
 
 	clear() {
-		let t = document.getElementById("book");
-		t.value = "";
+		let b = document.getElementById("book");
+		b.value = "";
+		let p = document.getElementById("panelCount");
+		p.innerHTML = "0";
 	}
 
 	copy() {
