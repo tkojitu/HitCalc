@@ -54,8 +54,7 @@ export default class {
 
 	calc() {
 		let b = this.getBook();
-		let res = this.p.parse(b.value);
-		b.value = res;
+		b.value = this.p.parse(b.value);
 	}
 
 	getBook() {
@@ -75,7 +74,7 @@ export default class {
 
 	copy() {
 		let b = this.getBook();
-		e.select();
+		b.select();
 		document.execCommand("copy");
 	}
 
